@@ -23,3 +23,4 @@ rootProject.name = "MovieDevApp"
 include(":app")
 include(":core")
 include(":core:network")
+include(":feature:movies")

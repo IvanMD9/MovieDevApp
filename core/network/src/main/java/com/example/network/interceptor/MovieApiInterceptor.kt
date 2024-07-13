@@ -1,6 +1,6 @@
 package com.example.network.interceptor
 
-import com.example.corenetwork.BuildConfig
+import com.example.core.network.BuildConfig
 import okhttp3.Interceptor
 import okhttp3.Response
 

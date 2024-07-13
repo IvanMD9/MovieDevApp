@@ -6,7 +6,7 @@ import retrofit2.http.Query
 
 interface MoviesClient {
 
-    @GET("/movie/popular/")
+    @GET("/3/movie/popular")
     suspend fun getMovies(
         @Query("page") page : Int
     ) : MoviesContainerResponse

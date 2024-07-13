@@ -6,4 +6,14 @@ plugins {
 android {
     namespace = "com.example.core"
     compileSdk = 34
+
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
+}
+
+dependencies {
+    implementation(libs.kotlinx.coroutines.core)
+    implementation(libs.paging.compose)
+    implementation(libs.paging.common)
 }

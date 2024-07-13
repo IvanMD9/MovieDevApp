@@ -1,7 +1,6 @@
 package com.example.feature.movies.presentation.store
 
 import androidx.paging.PagingData
-import androidx.paging.cachedIn
 import com.example.core.mvi.DisposableStoreImpl
 import com.example.core.paging.PagingSourceBuilder
 import com.example.feature.movies.domain.interactor.MoviesIntreactor
@@ -27,9 +26,7 @@ class MoviesStoreImpl @Inject constructor(
                 moviesIntreactor.getMovies(page)
             },
             pagingDiffUtil = MoviesDiffUtil
-        )
-            .flow
-            .cachedIn(storeScope)
+        ).flow
 
     override fun consume(action: MoviesAction) = Unit
 }

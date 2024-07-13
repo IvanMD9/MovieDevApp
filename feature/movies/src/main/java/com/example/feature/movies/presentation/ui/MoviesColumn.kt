@@ -1,8 +1,11 @@
 package com.example.feature.movies.presentation.ui
 
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.grid.GridCells
+import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
@@ -16,12 +19,12 @@ fun MoviesColumn(
     modifier: Modifier = Modifier,
 ) {
     val items = lazyPagingItems()
-    LazyColumn(
+    LazyVerticalGrid(
         modifier = modifier.fillMaxSize(),
-        contentPadding = PaddingValues(
-            horizontal = 12.dp,
-            vertical = 10.dp
-        )
+        columns = GridCells.Fixed(2),
+        contentPadding = PaddingValues(12.dp),
+        verticalArrangement = Arrangement.spacedBy(8.dp),
+        horizontalArrangement = Arrangement.spacedBy(8.dp)
     ) {
         items(
             count = items.itemCount,

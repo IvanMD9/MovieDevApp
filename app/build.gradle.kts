@@ -10,7 +10,7 @@ android {
 
     defaultConfig {
         applicationId = "com.example.moviedevapp"
-        minSdk = 27
+        minSdk = 29
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
@@ -42,7 +42,7 @@ android {
         compose = true
     }
     composeOptions {
-        kotlinCompilerExtensionVersion = "1.5.1"
+        kotlinCompilerExtensionVersion = "1.5.8"
     }
     packaging {
         resources {
@@ -62,5 +62,6 @@ dependencies {
     ksp(libs.dagger.compiler)
 
     implementation(project(":core:network"))
+    implementation(project(":core"))
     implementation(project(":feature:movies"))
 }

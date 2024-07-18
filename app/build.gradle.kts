@@ -64,4 +64,5 @@ dependencies {
     implementation(project(":core:network"))
     implementation(project(":core"))
     implementation(project(":feature:movies"))
+    implementation(project(":feature:details-movie"))
 }

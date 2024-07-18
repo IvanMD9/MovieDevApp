@@ -17,7 +17,7 @@ class PagingSourceBuilder<ItemType : Any>(
 
     companion object {
         private const val DEFAULT_INITIAL_PAGE_NUMBER = 1
-        private const val DEFAULT_PAGE_SIZE = 15
+        private const val DEFAULT_PAGE_SIZE = 20
 
         private val DEFAULT_CONFIG = PagingConfig(
             pageSize = DEFAULT_PAGE_SIZE,
@@ -33,11 +33,6 @@ class PagingSourceBuilder<ItemType : Any>(
             config = config,
             pagingSourceFactory = ::createPagingSource,
         ).flow
-
-    fun invalidate(force: Boolean) {
-        isForceInvalidate.set(force)
-        pagingSource?.invalidate()
-    }
 
     private fun createPagingSource():  PagerPagingSource<ItemType> {
         pagingSource = PagerPagingSource(

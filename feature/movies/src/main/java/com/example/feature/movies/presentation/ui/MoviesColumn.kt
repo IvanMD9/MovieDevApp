@@ -3,7 +3,6 @@ package com.example.feature.movies.presentation.ui
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.runtime.Composable
@@ -11,11 +10,13 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.paging.compose.LazyPagingItems
 import androidx.paging.compose.itemKey
+import com.example.core.extension.rememberLambda
 import com.example.feature.movies.domain.models.MovieItem
 
 @Composable
 fun MoviesColumn(
     lazyPagingItems: () -> LazyPagingItems<MovieItem>,
+    onClickItem: (MovieItem) -> Unit,
     modifier: Modifier = Modifier,
 ) {
     val items = lazyPagingItems()
@@ -32,7 +33,10 @@ fun MoviesColumn(
         ) { index ->
             items[index]?.let { movieItem ->
                 MovieElement(
-                    movieItem = movieItem
+                    movieItem = movieItem,
+                    onClickItem = rememberLambda(key1 = movieItem.id) {
+                        onClickItem(movieItem)
+                    },
                 )
             }
         }

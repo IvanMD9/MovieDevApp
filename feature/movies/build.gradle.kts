@@ -41,6 +41,7 @@ dependencies {
     implementation(libs.androidx.ui.graphics)
     implementation(libs.dagger.main)
     implementation(libs.androidx.material3)
+    implementation(libs.compose.navigation)
     ksp(libs.dagger.compiler)
 
     implementation(project(":core:network"))

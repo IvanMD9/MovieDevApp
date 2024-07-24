@@ -8,15 +8,15 @@ import com.example.feature.detailsmovie.navigation.MOVIE_DETAIL_ROUTE
 import com.example.feature.detailsmovie.navigation.navToDetailMovie
 import com.example.feature.detailsmovie.presentation.store.DetailMovieStore
 import com.example.feature.detailsmovie.presentation.ui.DetailMovieScreen
-import com.example.feature.movies.navigation.MOVIES_ROUTE
-import com.example.feature.movies.navigation.navToMovies
-import com.example.feature.movies.presentation.store.MoviesStore
-import com.example.feature.movies.presentation.ui.MoviesScreen
+import com.example.feature.search.navigation.MOVIES_ROUTE
+import com.example.feature.search.navigation.navToMovies
+import com.example.feature.search.presentation.store.SearchMoviesStore
+import com.example.feature.search.presentation.ui.MoviesScreen
 
 @Composable
 fun NavHostMovieDevApp(
     navController: NavHostController,
-    moviesStore: MoviesStore,
+    moviesStore: SearchMoviesStore,
     detailMovieStore: DetailMovieStore,
 ) {
     NavHost(

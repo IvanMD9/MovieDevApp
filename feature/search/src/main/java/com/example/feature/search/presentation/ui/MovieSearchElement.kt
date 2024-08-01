@@ -33,7 +33,7 @@ import coil.size.Size
 import com.example.feature.search.domain.models.MovieItem
 
 @Composable
-fun MovieElement(
+fun MovieSearchElement(
     movieItem: MovieItem,
     onClickItem: () -> Unit,
     modifier: Modifier = Modifier,
@@ -93,8 +93,8 @@ fun MovieElement(
 
 @Preview
 @Composable
-private fun MovieElementPreview() {
-    MovieElement(
+private fun MovieSearchElementPreview() {
+    MovieSearchElement(
         movieItem = MovieItem(
             id = 0,
             originalTitle = "Marvel",

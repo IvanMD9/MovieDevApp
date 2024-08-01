@@ -6,7 +6,7 @@ import retrofit2.http.Query
 
 interface SearchMovieClient {
 
-    @GET("/3/search/movie/")
+    @GET("/3/search/movie")
     suspend fun getSearchMovie(
         @Query("query") query: String,
         @Query("page") page: Int,

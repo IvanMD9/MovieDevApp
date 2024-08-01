@@ -1,5 +1,6 @@
 package com.example.feature.search.presentation.ui
 
+import android.util.Log
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
@@ -13,10 +14,8 @@ import androidx.paging.compose.itemKey
 import com.example.core.extension.rememberLambda
 import com.example.feature.search.domain.models.MovieItem
 
-// TODO: Реализовать логику поиска
-
 @Composable
-fun MoviesColumn(
+fun MoviesSearchColumn(
     lazyPagingItems: () -> LazyPagingItems<MovieItem>,
     onClickItem: (MovieItem) -> Unit,
     modifier: Modifier = Modifier,
@@ -34,7 +33,7 @@ fun MoviesColumn(
             key = items.itemKey { item -> item.id }
         ) { index ->
             items[index]?.let { movieItem ->
-                MovieElement(
+                MovieSearchElement(
                     movieItem = movieItem,
                     onClickItem = rememberLambda(key1 = movieItem.id) {
                         onClickItem(movieItem)

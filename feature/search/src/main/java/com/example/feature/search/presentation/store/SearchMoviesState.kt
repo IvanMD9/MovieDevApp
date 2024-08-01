@@ -5,8 +5,14 @@ import com.example.feature.search.domain.models.MovieItem
 import kotlinx.coroutines.flow.Flow
 
 data class SearchMoviesState(
-    val movies: () -> Flow<PagingData<MovieItem>>,
-    val query: String,
-    val isLoading: Boolean,
-    val isError: Boolean
+    val searchMovies: () -> Flow<PagingData<MovieItem>>,
+    val searchQuery: String,
+    val searchState: SearchState,
 )
+
+sealed interface SearchState {
+
+    data object EmptySearch : SearchState
+
+    data object Loading : SearchState
+}

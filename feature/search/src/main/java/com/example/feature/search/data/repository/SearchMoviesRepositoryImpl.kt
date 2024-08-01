@@ -6,11 +6,11 @@ import com.example.network.client.searchmovie.SearchMovieClient
 import javax.inject.Inject
 
 class SearchMoviesRepositoryImpl @Inject constructor(
-    private val moviesClient: SearchMovieClient
+    private val searchMoviesClient: SearchMovieClient
 ) : SearchMoviesRepository {
 
     override suspend fun getSearchMovies(query: String, page: Int): List<MovieItem> {
-        return moviesClient
+        return searchMoviesClient
             .getSearchMovie(
                 query = query,
                 page = page

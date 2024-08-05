@@ -11,10 +11,10 @@ android {
     defaultConfig {
         buildConfigField(
             "String",
-            "MOVIES_API_KEY",
-            "\"Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI1N2MwZWJlNTI5MjgxMzVmMGZhNjI1MzI4NmUxZjlhNCIsIm5iZiI6MTcxOTIzNTgwMC4zMTcxMDEsInN1YiI6IjY0MDIzZDhhNjk5ZmI3MDA3ZDhmYzAzNiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.5xZ7KVmR5H-rB63dbTFytN9FLPNwjH2UBFiSdNrOD40\""
+            "NEWS_API_KEY",
+            "\"0807aa6f18214b018149e7c552e74394\""
         )
-        buildConfigField("String", "MOVIES_API_BASE_URL", "\"https://api.themoviedb.org/\"")
+        buildConfigField("String", "NEWS_API_BASE_URL", "\"https://newsapi.org/\"")
     }
 
     buildFeatures {
@@ -29,6 +29,7 @@ android {
 dependencies {
     implementation(libs.retrofit)
     implementation(libs.okhttp)
+    implementation(libs.okhttp.logging.interceptor)
     implementation(libs.retorfit.gson.converter)
     implementation(libs.dagger.main)
     ksp(libs.dagger.compiler)

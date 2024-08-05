@@ -1,14 +1,11 @@
 package com.example.feature.movies.data.mapper
 
-import com.example.feature.movies.domain.models.MovieItem
-import com.example.network.client.movies.models.MovieResponse
+import com.example.feature.movies.domain.models.NewsItem
+import com.example.network.client.movies.models.NewsResponse
 
-fun MovieResponse.toDomain(): MovieItem = MovieItem(
-    id = id,
-    originalTitle = originalTitle,
-    overview = overview,
-    posterPath = posterPath,
-    releaseDate = releaseDate,
-    voteAverage = voteAverage,
-    voteCount = voteCount,
+fun NewsResponse.toDomain(): NewsItem = NewsItem(
+    author = author,
+    title = title,
+    image = image,
+    content = content,
 )

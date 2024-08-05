@@ -1,13 +1,13 @@
 package com.example.network.client.movies
 
-import com.example.network.client.movies.models.MoviesContainerResponse
+import com.example.network.client.movies.models.NewsContainerResponse
 import retrofit2.http.GET
 import retrofit2.http.Query
 
 interface MoviesClient {
 
-    @GET("/3/movie/popular")
-    suspend fun getMovies(
+    @GET("v2/top-headlines?country=us")
+    suspend fun getNews(
         @Query("page") page : Int
-    ) : MoviesContainerResponse
+    ) : NewsContainerResponse
 }

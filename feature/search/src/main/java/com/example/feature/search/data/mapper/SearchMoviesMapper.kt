@@ -1,14 +1,10 @@
 package com.example.feature.search.data.mapper
 
-import com.example.feature.search.domain.models.MovieItem
-import com.example.network.client.movies.models.MovieResponse
+import com.example.network.client.movies.models.NewsResponse
 
-fun MovieResponse.toDomain(): MovieItem = MovieItem(
-    id = id,
-    originalTitle = originalTitle,
-    overview = overview,
-    posterPath = posterPath,
-    releaseDate = releaseDate,
-    voteAverage = voteAverage,
-    voteCount = voteCount,
-)
+//fun NewsResponse.toDomain(): NewsItem = NewsItem(
+//    author = author,
+//    title = title,
+//    image = image,
+//    content = content,
+//)

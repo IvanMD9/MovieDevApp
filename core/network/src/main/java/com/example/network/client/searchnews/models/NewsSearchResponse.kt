@@ -1,9 +1,9 @@
-package com.example.network.client.movies.models
+package com.example.network.client.searchnews.models
 
 import com.google.gson.annotations.SerializedName
 
-data class NewsResponse(
-    @SerializedName("source") val source: SourceResponse?,
+data class NewsSearchResponse(
+    @SerializedName("source") val source: NewsSearchSourceResponse?,
     @SerializedName("author") val author: String?,
     @SerializedName("title") val title: String?,
     @SerializedName("description") val description: String?,

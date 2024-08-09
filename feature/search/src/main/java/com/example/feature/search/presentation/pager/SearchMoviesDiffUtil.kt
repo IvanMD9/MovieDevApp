@@ -1,14 +1,14 @@
 package com.example.feature.search.presentation.pager
 
 import com.example.core.paging.PagingDiffUtil
-import com.example.feature.search.domain.models.MovieItem
+import com.example.feature.search.domain.models.NewsSearchItem
 
-object SearchMoviesDiffUtil : PagingDiffUtil<MovieItem>() {
+object SearchMoviesDiffUtil : PagingDiffUtil<NewsSearchItem>() {
 
     override fun invoke(
-        oldItem: MovieItem,
-        newItem: MovieItem
+        oldItem: NewsSearchItem,
+        newItem: NewsSearchItem
     ): Boolean {
-        return oldItem.id == newItem.id
+        return oldItem.title == newItem.title
     }
 }

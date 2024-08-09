@@ -45,7 +45,11 @@ fun SearchToolbar(
         TextField(
             modifier = Modifier.weight(1f),
             value = value,
-            onValueChange = onValueChange,
+            onValueChange = { newTextState ->
+                if (value != newTextState) {
+                    onValueChange(newTextState)
+                }
+            },
             placeholder = {
                 Text(
                     modifier = Modifier.padding(start = 8.dp),

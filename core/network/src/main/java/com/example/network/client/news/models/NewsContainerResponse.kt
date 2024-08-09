@@ -1,4 +1,4 @@
-package com.example.network.client.movies.models
+package com.example.network.client.news.models
 
 import com.google.gson.annotations.SerializedName
 

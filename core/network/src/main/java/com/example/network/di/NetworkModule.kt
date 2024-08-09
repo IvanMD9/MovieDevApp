@@ -1,8 +1,8 @@
 package com.example.network.di
 
 import com.example.core.network.BuildConfig
-import com.example.network.client.movies.MoviesClient
-import com.example.network.client.searchmovie.SearchMovieClient
+import com.example.network.client.news.NewsClient
+import com.example.network.client.searchnews.SearchNewsClient
 import com.example.network.interceptor.NewsInterceptor
 import dagger.Module
 import dagger.Provides
@@ -37,14 +37,14 @@ interface NetworkModule {
 
         @Provides
         @Singleton
-        fun provideMoviesClient(retrofit: Retrofit): MoviesClient {
-            return retrofit.create(MoviesClient::class.java)
+        fun provideMoviesClient(retrofit: Retrofit): NewsClient {
+            return retrofit.create(NewsClient::class.java)
         }
 
         @Provides
         @Singleton
-        fun provideSearchMovieClient(retrofit: Retrofit): SearchMovieClient {
-            return retrofit.create(SearchMovieClient::class.java)
+        fun provideSearchMovieClient(retrofit: Retrofit): SearchNewsClient {
+            return retrofit.create(SearchNewsClient::class.java)
         }
     }
 }

@@ -8,16 +8,16 @@ import com.example.feature.movies.navigation.NEWS_ROUTE
 import com.example.feature.movies.navigation.navToNews
 import com.example.feature.movies.presentation.store.NewsStore
 import com.example.feature.movies.presentation.ui.NewsScreen
-import com.example.feature.search.navigation.SEARCH_MOVIES_ROUTE
-import com.example.feature.search.navigation.navToSearchMovies
-import com.example.feature.search.presentation.store.SearchMoviesStore
-import com.example.feature.search.presentation.ui.MoviesSearchScreen
+import com.example.feature.search.navigation.SEARCH_NEWS_ROUTE
+import com.example.feature.search.navigation.navToSearchNews
+import com.example.feature.search.presentation.store.SearchNewsStore
+import com.example.feature.search.presentation.ui.NewsSearchScreen
 
 @Composable
 fun NavHostNewDevApp(
     navController: NavHostController,
-    moviesStore: NewsStore,
-    searchMoviesStore: SearchMoviesStore,
+    newsStore: NewsStore,
+    searchNewsStore: SearchNewsStore,
 ) {
     NavHost(
         navController = navController,
@@ -25,18 +25,15 @@ fun NavHostNewDevApp(
     ) {
         composable(NEWS_ROUTE) {
             NewsScreen(
-                store = moviesStore,
+                store = newsStore,
                 onSearchClick = {
-                    navController.navToSearchMovies()
+                    navController.navToSearchNews()
                 }
             )
         }
-        composable(SEARCH_MOVIES_ROUTE) {
-            MoviesSearchScreen(
-                store = searchMoviesStore,
-                onClickItemMovie = { movieItem ->
-
-                },
+        composable(SEARCH_NEWS_ROUTE) {
+            NewsSearchScreen(
+                store = searchNewsStore,
                 onBackClick = {
                     navController.navToNews()
                 }

@@ -1,11 +1,11 @@
 package com.example.network.di
 
-import com.example.network.client.movies.MoviesClient
-import com.example.network.client.searchmovie.SearchMovieClient
+import com.example.network.client.news.NewsClient
+import com.example.network.client.searchnews.SearchNewsClient
 
 interface NetworkApi {
 
-    fun provideMoviesClient(): MoviesClient
+    fun provideNewsClient(): NewsClient
 
-    fun provideSearchMovieClient(): SearchMovieClient
+    fun provideSearchNewsClient(): SearchNewsClient
 }

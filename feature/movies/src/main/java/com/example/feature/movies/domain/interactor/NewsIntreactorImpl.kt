@@ -8,7 +8,10 @@ class NewsIntreactorImpl @Inject constructor(
     private val repository: NewsRepository
 ) : NewsIntreactor {
 
-    override suspend fun getNews(page: Int): List<NewsItem> {
-        return repository.getNews(page)
+    override suspend fun getNews(page: Int, country: String): List<NewsItem> {
+        return repository.getNews(
+            page = page,
+            country = country
+        )
     }
 }

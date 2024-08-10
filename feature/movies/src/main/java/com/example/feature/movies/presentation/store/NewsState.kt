@@ -6,6 +6,6 @@ import kotlinx.coroutines.flow.Flow
 
 data class NewsState(
     val news: () -> Flow<PagingData<NewsItem>>,
-    val isLoading: Boolean,
-    val isError: Boolean
+    val selectCountry: String,
+    val isShowMenu: Boolean,
 )

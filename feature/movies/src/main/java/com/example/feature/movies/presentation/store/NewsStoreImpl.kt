@@ -4,9 +4,11 @@ import androidx.paging.PagingData
 import com.example.core.mvi.DisposableStoreImpl
 import com.example.core.paging.PagingSourceBuilder
 import com.example.feature.movies.domain.interactor.NewsIntreactor
+import com.example.feature.movies.domain.models.CountryNews
 import com.example.feature.movies.domain.models.NewsItem
 import com.example.feature.movies.presentation.pager.NewsDiffUtil
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.update
 import javax.inject.Inject
 
 class NewsStoreImpl @Inject constructor(
@@ -16,17 +18,53 @@ class NewsStoreImpl @Inject constructor(
     override val initialState: NewsState
         get() = NewsState(
             news = ::newsPagingFlow,
-            isLoading = false,
-            isError = false,
+            isShowMenu = false,
+            selectCountry = CountryNews.RUSSIAN.value,
         )
 
     private val newsPagingFlow: Flow<PagingData<NewsItem>>
         get() = PagingSourceBuilder(
             requestPage = { page, _ ->
-                newsIntreactor.getNews(page)
+                newsIntreactor.getNews(
+                    page = page,
+                    country = CountryNews.RUSSIAN.value
+                )
             },
             pagingDiffUtil = NewsDiffUtil
         ).flow
 
-    override fun consume(action: NewsAction) = Unit
+    override fun consume(action: NewsAction) {
+        when (action) {
+            is NewsAction.OnClickMenu -> onClickMenu(action.showMenu)
+            is NewsAction.OnClickItemMenu -> onClickItemMenu(action.country)
+        }
+    }
+
+    private fun onClickMenu(isShowMenu: Boolean) {
+        state.update { currentState ->
+            currentState.copy(
+                isShowMenu = isShowMenu
+            )
+        }
+    }
+
+    private fun onClickItemMenu(country: String) {
+        val newsPagingFlow: Flow<PagingData<NewsItem>> = PagingSourceBuilder(
+            requestPage = { page, _ ->
+                newsIntreactor.getNews(
+                    page = page,
+                    country = country
+                )
+            },
+            pagingDiffUtil = NewsDiffUtil
+        ).flow
+
+        state.update { currentState ->
+            currentState.copy(
+                news = { newsPagingFlow },
+                isShowMenu = false,
+                selectCountry = country
+            )
+        }
+    }
 }

@@ -6,8 +6,9 @@ import retrofit2.http.Query
 
 interface NewsClient {
 
-    @GET("v2/top-headlines?country=us")
+    @GET("v2/top-headlines")
     suspend fun getNews(
         @Query("page") page : Int,
+        @Query("country") country : String,
     ) : NewsContainerResponse
 }

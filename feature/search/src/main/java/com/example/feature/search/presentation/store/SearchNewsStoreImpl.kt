@@ -22,6 +22,7 @@ class SearchNewsStoreImpl @Inject constructor(
         get() = SearchNewsState(
             searchNews = ::searchNewsPagingFlow,
             searchQuery = "",
+            searchScreenState = SearchScreenState.EmptySearch,
         )
 
     private var searchJob: Job? = null
@@ -35,8 +36,7 @@ class SearchNewsStoreImpl @Inject constructor(
                 )
             },
             pagingDiffUtil = SearchMoviesDiffUtil
-        )
-            .flow
+        ).flow
 
     override fun consume(action: SearchNewsAction) {
         when (action) {
@@ -49,7 +49,11 @@ class SearchNewsStoreImpl @Inject constructor(
         state.update { currentState ->
             currentState.copy(
                 searchQuery = queryChange,
-                searchNews = ::searchNewsPagingFlow
+                searchScreenState = if (queryChange.isNotEmpty()) {
+                    currentState.searchScreenState
+                } else {
+                    SearchScreenState.EmptySearch
+                }
             )
         }
         searchJob?.cancel()
@@ -58,7 +62,11 @@ class SearchNewsStoreImpl @Inject constructor(
             state.update { currentState ->
                 currentState.copy(
                     searchQuery = queryChange,
-                    searchNews = ::searchNewsPagingFlow
+                    searchScreenState = if (queryChange.isNotEmpty()) {
+                        SearchScreenState.SearchResultState.Loading
+                    } else {
+                        SearchScreenState.EmptySearch
+                    }
                 )
             }
         }

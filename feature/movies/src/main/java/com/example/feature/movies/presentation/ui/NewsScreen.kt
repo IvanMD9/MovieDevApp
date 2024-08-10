@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.MoreVert
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Scaffold
@@ -23,6 +24,9 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.paging.compose.collectAsLazyPagingItems
+import com.example.core.extension.rememberLambda
+import com.example.core.extension.rememberLambda1
+import com.example.feature.movies.presentation.store.NewsAction
 import com.example.feature.movies.presentation.store.NewsStore
 
 @Composable
@@ -31,12 +35,12 @@ fun NewsScreen(
     onSearchClick: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
-    val newsStore by remember(store) {
+    val newsState by remember(store) {
         store.state
     }.collectAsState()
 
-    val lazyPagingItems = remember {
-        newsStore.news()
+    val lazyPagingItems = remember(newsState.selectCountry) {
+        newsState.news()
     }.collectAsLazyPagingItems()
 
     Scaffold(
@@ -48,6 +52,21 @@ fun NewsScreen(
                     .height(44.dp)
                     .padding(horizontal = 8.dp)
             ) {
+                Icon(
+                    imageVector = Icons.Default.MoreVert,
+                    contentDescription = null,
+                    modifier = Modifier
+                        .align(Alignment.CenterStart)
+                        .size(32.dp)
+                        .padding(end = 8.dp)
+                        .clickable(
+                            onClick = rememberLambda(key1 = Unit) {
+                                store.consume(NewsAction.OnClickMenu(showMenu = true))
+                            }
+                        ),
+                    tint = Color.Black
+                )
+
                 Text(
                     modifier = Modifier.align(Alignment.Center),
                     text = "NewsApp",
@@ -71,6 +90,16 @@ fun NewsScreen(
             NewsColumn(
                 modifier = modifier.padding(paddingValues),
                 lazyPagingItems = { lazyPagingItems },
+            )
+
+            NewsShowMenu(
+                expanded = newsState.isShowMenu,
+                onClickCountry = rememberLambda1 { country ->
+                    store.consume(NewsAction.OnClickItemMenu(country = country))
+                },
+                onCloseMenu = rememberLambda(key1 = Unit) {
+                    store.consume(NewsAction.OnClickMenu(showMenu = false))
+                },
             )
         }
     )

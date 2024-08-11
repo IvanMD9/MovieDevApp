@@ -64,6 +64,6 @@ dependencies {
 
     implementation(project(":core:network"))
     implementation(project(":core"))
-    implementation(project(":feature:movies"))
+    implementation(project(":feature:news"))
     implementation(project(":feature:search"))
 }

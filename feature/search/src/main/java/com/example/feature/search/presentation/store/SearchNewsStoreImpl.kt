@@ -18,10 +18,15 @@ class SearchNewsStoreImpl @Inject constructor(
 ) : SearchNewsStore,
     DisposableStoreImpl<SearchNewsAction, SearchNewsState, SearchNewsEvent>() {
 
+    companion object {
+        private const val EMPTY_SEARCH = ""
+        private const val DELAY_SEARCH = 1000L
+    }
+
     override val initialState: SearchNewsState
         get() = SearchNewsState(
             searchNews = ::searchNewsPagingFlow,
-            searchQuery = "",
+            searchQuery = EMPTY_SEARCH,
             searchScreenState = SearchScreenState.EmptySearch,
         )
 
@@ -41,6 +46,7 @@ class SearchNewsStoreImpl @Inject constructor(
     override fun consume(action: SearchNewsAction) {
         when (action) {
             is SearchNewsAction.OnValueChanged -> onValueSearchChange(action.value)
+            is SearchNewsAction.OnClickClearText -> onClickClearText()
         }
     }
 
@@ -50,7 +56,7 @@ class SearchNewsStoreImpl @Inject constructor(
             currentState.copy(
                 searchQuery = queryChange,
                 searchScreenState = if (queryChange.isNotEmpty()) {
-                    currentState.searchScreenState
+                    SearchScreenState.Content
                 } else {
                     SearchScreenState.EmptySearch
                 }
@@ -58,17 +64,26 @@ class SearchNewsStoreImpl @Inject constructor(
         }
         searchJob?.cancel()
         searchJob = storeScope.launch {
-            delay(1000)
+            delay(DELAY_SEARCH)
             state.update { currentState ->
                 currentState.copy(
                     searchQuery = queryChange,
                     searchScreenState = if (queryChange.isNotEmpty()) {
-                        SearchScreenState.SearchResultState.Loading
+                        SearchScreenState.Content
                     } else {
                         SearchScreenState.EmptySearch
                     }
                 )
             }
+        }
+    }
+
+    private fun onClickClearText() {
+        state.update { currentsState ->
+            currentsState.copy(
+                searchQuery = EMPTY_SEARCH,
+                searchScreenState = SearchScreenState.EmptySearch,
+            )
         }
     }
 }

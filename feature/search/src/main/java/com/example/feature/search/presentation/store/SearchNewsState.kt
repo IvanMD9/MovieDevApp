@@ -16,8 +16,5 @@ sealed interface SearchScreenState {
 
     data object EmptySearch : SearchScreenState
 
-    sealed interface SearchResultState : SearchScreenState {
-
-        data object Loading : SearchResultState
-    }
+    data object Content : SearchScreenState
 }

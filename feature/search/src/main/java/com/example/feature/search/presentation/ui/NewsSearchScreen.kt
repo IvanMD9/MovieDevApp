@@ -16,6 +16,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.sp
 import androidx.paging.compose.collectAsLazyPagingItems
+import com.example.core.extension.rememberLambda
 import com.example.core.extension.rememberLambda1
 import com.example.feature.search.presentation.store.SearchNewsAction
 import com.example.feature.search.presentation.store.SearchNewsStore
@@ -43,18 +44,19 @@ fun NewsSearchScreen(
                 onValueChange = rememberLambda1 { value ->
                     store.consume(SearchNewsAction.OnValueChanged(value))
                 },
-                onBackClick = onBackClick
+                onBackClick = onBackClick,
+                onClearText = rememberLambda(key1 = Unit) {
+                    store.consume(SearchNewsAction.OnClickClearText)
+                },
             )
         },
         content = { paddingValues ->
             when (newsSearchStore.searchScreenState) {
-                is SearchScreenState.SearchResultState -> {
+                is SearchScreenState.Content -> {
                     NewsSearchColumn(
                         lazyPagingItems = { lazyPagingItems },
                         modifier = Modifier.padding(paddingValues),
-                        isLoadingVisible = newsSearchStore.searchScreenState is
-                                SearchScreenState.SearchResultState.Loading &&
-                                (lazyPagingItems.itemCount > 0).not()
+                        isLoadingVisible = (lazyPagingItems.itemCount > 0).not()
                     )
                 }
 

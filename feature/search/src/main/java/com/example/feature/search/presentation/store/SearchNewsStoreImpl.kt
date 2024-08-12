@@ -5,7 +5,7 @@ import com.example.core.mvi.DisposableStoreImpl
 import com.example.core.paging.PagingSourceBuilder
 import com.example.feature.search.domain.interactor.SearchNewsIntreactor
 import com.example.feature.search.domain.models.NewsSearchItem
-import com.example.feature.search.presentation.pager.SearchMoviesDiffUtil
+import com.example.feature.search.presentation.pager.SearchNewsDiffUtil
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
@@ -14,7 +14,7 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 class SearchNewsStoreImpl @Inject constructor(
-    private val searchMoviesIntreactor: SearchNewsIntreactor,
+    private val searchNewsIntreactor: SearchNewsIntreactor,
 ) : SearchNewsStore,
     DisposableStoreImpl<SearchNewsAction, SearchNewsState, SearchNewsEvent>() {
 
@@ -35,12 +35,12 @@ class SearchNewsStoreImpl @Inject constructor(
     private val searchNewsPagingFlow: Flow<PagingData<NewsSearchItem>>
         get() = PagingSourceBuilder(
             requestPage = { page, _ ->
-                searchMoviesIntreactor.getSearchNews(
+                searchNewsIntreactor.getSearchNews(
                     query = state.value.searchQuery.trim(),
                     page = page
                 )
             },
-            pagingDiffUtil = SearchMoviesDiffUtil
+            pagingDiffUtil = SearchNewsDiffUtil
         ).flow
 
     override fun consume(action: SearchNewsAction) {

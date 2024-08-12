@@ -57,7 +57,7 @@ fun SearchToolbar(
 @Composable
 private fun SearchToolbarPreview() {
     SearchToolbar(
-        value = "Movie",
+        value = "News",
         onValueChange = {},
         onBackClick = {},
         onClearText = {}

@@ -39,9 +39,9 @@ fun NewsColumn(
                 count = items.itemCount,
                 key = items.itemKey { item -> item.title.orEmpty() }
             ) { index ->
-                items[index]?.let { movieItem ->
+                items[index]?.let { newsItem ->
                     NewsElement(
-                        newsItem = movieItem,
+                        newsItem = newsItem,
                     )
                 }
             }

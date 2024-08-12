@@ -37,13 +37,13 @@ interface NetworkModule {
 
         @Provides
         @Singleton
-        fun provideMoviesClient(retrofit: Retrofit): NewsClient {
+        fun provideNewsClient(retrofit: Retrofit): NewsClient {
             return retrofit.create(NewsClient::class.java)
         }
 
         @Provides
         @Singleton
-        fun provideSearchMovieClient(retrofit: Retrofit): SearchNewsClient {
+        fun provideSearchNewsClient(retrofit: Retrofit): SearchNewsClient {
             return retrofit.create(SearchNewsClient::class.java)
         }
     }

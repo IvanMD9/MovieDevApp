@@ -104,7 +104,7 @@ fun NewsElement(
 
 @Preview
 @Composable
-private fun MovieElementPreview() {
+private fun NewsElementPreview() {
     NewsElement(
         newsItem = NewsItem(
             author = "Yahoo Sports",

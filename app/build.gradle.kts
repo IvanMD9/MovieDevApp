@@ -5,11 +5,11 @@ plugins {
 }
 
 android {
-    namespace = "com.example.moviedevapp"
+    namespace = "com.example.newsdevapp"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.example.moviedevapp"
+        applicationId = "com.example.newsdevapp"
         minSdk = 29
         targetSdk = 34
         versionCode = 1

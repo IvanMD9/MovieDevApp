@@ -19,7 +19,7 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "MovieDevApp"
+rootProject.name = "NewsDevApp"
 include(":app")
 include(":core")
 include(":core:network")

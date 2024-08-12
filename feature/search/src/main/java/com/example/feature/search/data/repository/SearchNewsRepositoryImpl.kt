@@ -6,11 +6,11 @@ import com.example.network.client.searchnews.SearchNewsClient
 import javax.inject.Inject
 
 class SearchNewsRepositoryImpl @Inject constructor(
-    private val searchMoviesClient: SearchNewsClient
+    private val searchNewsClient: SearchNewsClient
 ) : SearchNewsRepository {
 
     override suspend fun getSearchNews(query: String, page: Int): List<NewsSearchItem> {
-        return searchMoviesClient
+        return searchNewsClient
             .getSearchNews(
                 query = query,
                 page = page

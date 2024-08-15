@@ -1,5 +1,6 @@
 package com.example.feature.search.di
 
+import com.example.analytics.di.AnalyticsApi
 import com.example.feature.search.presentation.store.SearchNewsStore
 import com.example.network.di.NetworkApi
 import dagger.Component
@@ -7,7 +8,7 @@ import dagger.Component
 @SearchNewsScope
 @Component(
     modules = [SearchNewsModule::class],
-    dependencies = [NetworkApi::class]
+    dependencies = [NetworkApi::class, AnalyticsApi::class]
 )
 interface SearchNewsComponent {
 
@@ -16,6 +17,9 @@ interface SearchNewsComponent {
     @Component.Factory
     interface Factory {
 
-        fun createNetworkApi(networkApi: NetworkApi): SearchNewsComponent
+        fun createNetworkApi(
+            networkApi: NetworkApi,
+            analyticsApi: AnalyticsApi,
+        ): SearchNewsComponent
     }
 }

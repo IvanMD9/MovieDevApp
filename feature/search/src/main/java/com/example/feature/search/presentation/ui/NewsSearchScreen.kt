@@ -44,8 +44,11 @@ fun NewsSearchScreen(
                 onValueChange = rememberLambda1 { value ->
                     store.consume(SearchNewsAction.OnValueChanged(value))
                 },
-                onBackClick = onBackClick,
-                onClearText = rememberLambda(key1 = Unit) {
+                onBackClick = rememberLambda {
+                    onBackClick()
+                    store.consume(SearchNewsAction.OnClickBack)
+                },
+                onClearText = rememberLambda {
                     store.consume(SearchNewsAction.OnClickClearText)
                 },
             )

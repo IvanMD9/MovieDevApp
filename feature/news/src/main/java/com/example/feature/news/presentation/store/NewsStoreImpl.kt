@@ -1,6 +1,7 @@
 package com.example.feature.news.presentation.store
 
 import androidx.paging.PagingData
+import com.example.analytics.analyticsmanager.AnalyticsManager
 import com.example.core.mvi.DisposableStoreImpl
 import com.example.core.paging.PagingSourceBuilder
 import com.example.feature.news.domain.interactor.NewsIntreactor
@@ -13,6 +14,7 @@ import javax.inject.Inject
 
 class NewsStoreImpl @Inject constructor(
     private val newsIntreactor: NewsIntreactor,
+    private val analyticsManager: AnalyticsManager,
 ) : NewsStore, DisposableStoreImpl<NewsAction, NewsState, NewsEvent>() {
 
     override val initialState: NewsState
@@ -38,6 +40,7 @@ class NewsStoreImpl @Inject constructor(
         when (action) {
             is NewsAction.OnClickMenu -> onClickMenu(action.showMenu)
             is NewsAction.OnClickItemMenu -> onClickItemMenu(action.country)
+            is NewsAction.OnClickSearch -> onClickSearch()
         }
     }
 
@@ -47,6 +50,7 @@ class NewsStoreImpl @Inject constructor(
                 isShowMenu = isShowMenu
             )
         }
+        analyticsManager.logEvent(NewsAnalyticsEvent.ClickMenuButton)
     }
 
     private fun onClickItemMenu(country: String) {
@@ -67,5 +71,10 @@ class NewsStoreImpl @Inject constructor(
                 selectCountry = country
             )
         }
+        analyticsManager.logEvent(NewsAnalyticsEvent.ClickItemCountryMenu(country))
+    }
+
+    private fun onClickSearch() {
+        analyticsManager.logEvent(NewsAnalyticsEvent.ClickSearchButton)
     }
 }

@@ -1,5 +1,6 @@
 package com.example.feature.news.di
 
+import com.example.analytics.di.AnalyticsApi
 import com.example.feature.news.presentation.store.NewsStore
 import com.example.network.di.NetworkApi
 import dagger.Component
@@ -7,7 +8,7 @@ import dagger.Component
 @NewsScope
 @Component(
     modules = [NewsModule::class],
-    dependencies = [NetworkApi::class]
+    dependencies = [NetworkApi::class, AnalyticsApi::class]
 )
 interface NewsComponent {
 
@@ -16,6 +17,9 @@ interface NewsComponent {
     @Component.Factory
     interface Factory {
 
-        fun createNetworkApi(networkApi: NetworkApi): NewsComponent
+        fun createNetworkApi(
+            networkApi: NetworkApi,
+            analyticsApi: AnalyticsApi,
+        ): NewsComponent
     }
 }

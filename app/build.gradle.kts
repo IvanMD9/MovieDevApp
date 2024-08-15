@@ -2,6 +2,7 @@ plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsKotlinAndroid)
     alias(libs.plugins.ksp)
+    alias(libs.plugins.google.services)
 }
 
 android {
@@ -60,10 +61,12 @@ dependencies {
     implementation(libs.androidx.material3)
     implementation(libs.compose.navigation)
     implementation(libs.dagger.main)
+    implementation(libs.firebase.analytics)
     ksp(libs.dagger.compiler)
 
-    implementation(project(":core:network"))
     implementation(project(":core"))
+    implementation(project(":core:network"))
+    implementation(project(":core:analytics"))
     implementation(project(":feature:news"))
     implementation(project(":feature:search"))
 }

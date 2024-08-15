@@ -60,7 +60,7 @@ fun NewsScreen(
                         .size(32.dp)
                         .padding(end = 8.dp)
                         .clickable(
-                            onClick = rememberLambda(key1 = Unit) {
+                            onClick = rememberLambda {
                                 store.consume(NewsAction.OnClickMenu(showMenu = true))
                             }
                         ),
@@ -81,7 +81,12 @@ fun NewsScreen(
                         .align(Alignment.CenterEnd)
                         .size(32.dp)
                         .padding(end = 8.dp)
-                        .clickable(onClick = onSearchClick),
+                        .clickable(
+                            onClick = {
+                                onSearchClick()
+                                store.consume(NewsAction.OnClickSearch)
+                            }
+                        ),
                     tint = Color.Black
                 )
             }
@@ -98,7 +103,7 @@ fun NewsScreen(
                 onClickCountry = rememberLambda1 { country ->
                     store.consume(NewsAction.OnClickItemMenu(country = country))
                 },
-                onCloseMenu = rememberLambda(key1 = Unit) {
+                onCloseMenu = rememberLambda {
                     store.consume(NewsAction.OnClickMenu(showMenu = false))
                 },
             )

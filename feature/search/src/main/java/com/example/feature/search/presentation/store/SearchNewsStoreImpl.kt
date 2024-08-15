@@ -1,6 +1,7 @@
 package com.example.feature.search.presentation.store
 
 import androidx.paging.PagingData
+import com.example.analytics.analyticsmanager.AnalyticsManager
 import com.example.core.mvi.DisposableStoreImpl
 import com.example.core.paging.PagingSourceBuilder
 import com.example.feature.search.domain.interactor.SearchNewsIntreactor
@@ -15,6 +16,7 @@ import javax.inject.Inject
 
 class SearchNewsStoreImpl @Inject constructor(
     private val searchNewsIntreactor: SearchNewsIntreactor,
+    private val analyticsManager: AnalyticsManager,
 ) : SearchNewsStore,
     DisposableStoreImpl<SearchNewsAction, SearchNewsState, SearchNewsEvent>() {
 
@@ -47,6 +49,7 @@ class SearchNewsStoreImpl @Inject constructor(
         when (action) {
             is SearchNewsAction.OnValueChanged -> onValueSearchChange(action.value)
             is SearchNewsAction.OnClickClearText -> onClickClearText()
+            is SearchNewsAction.OnClickBack -> onClickBack()
         }
     }
 
@@ -85,5 +88,10 @@ class SearchNewsStoreImpl @Inject constructor(
                 searchScreenState = SearchScreenState.EmptySearch,
             )
         }
+        analyticsManager.logEvent(SearchNewsAnalytics.SearchNewsClearTextButton)
+    }
+
+    private fun onClickBack() {
+        analyticsManager.logEvent(SearchNewsAnalytics.SearchNewsBackButton)
     }
 }

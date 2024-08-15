@@ -45,5 +45,6 @@ dependencies {
     ksp(libs.dagger.compiler)
 
     implementation(project(":core:network"))
+    implementation(project(":core:analytics"))
     implementation(project(":core"))
 }

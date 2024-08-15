@@ -20,9 +20,11 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.feature.search.R
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -53,7 +55,7 @@ fun SearchTextField(
                 placeholder = {
                     Text(
                         modifier = Modifier.padding(start = 8.dp),
-                        text = "Введите текст",
+                        text = stringResource(id = R.string.app_search_text_field_placeholder),
                         fontSize = 10.sp,
                         color = Color.Gray
                     )

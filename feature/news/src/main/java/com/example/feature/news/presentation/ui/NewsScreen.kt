@@ -20,12 +20,14 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.paging.compose.collectAsLazyPagingItems
 import com.example.core.extension.rememberLambda
 import com.example.core.extension.rememberLambda1
+import com.example.feature.news.R
 import com.example.feature.news.presentation.store.NewsAction
 import com.example.feature.news.presentation.store.NewsStore
 
@@ -69,7 +71,7 @@ fun NewsScreen(
 
                 Text(
                     modifier = Modifier.align(Alignment.Center),
-                    text = "NewsApp",
+                    text = stringResource(id = R.string.app_news_title),
                     fontSize = 18.sp,
                     fontWeight = FontWeight.Bold,
                     color = Color.Black,

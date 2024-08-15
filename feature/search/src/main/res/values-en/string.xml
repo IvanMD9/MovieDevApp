@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_search_text_field_placeholder">Enter the text</string>
+    <string name="app_search_empty_screen">Enter the text to search for information</string>
+</resources>

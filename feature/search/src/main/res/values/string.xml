@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_search_text_field_placeholder">Введите текст</string>
+    <string name="app_search_empty_screen">Введите текст для поиска информации</string>
+</resources>

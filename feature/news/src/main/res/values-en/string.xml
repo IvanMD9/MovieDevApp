@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_news_item_menu_russian_country">Russian</string>
+    <string name="app_news_item_menu_usa_country">USA</string>
+    <string name="app_news_title">News app</string>
+</resources>

@@ -12,12 +12,14 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.sp
 import androidx.paging.compose.collectAsLazyPagingItems
 import com.example.core.extension.rememberLambda
 import com.example.core.extension.rememberLambda1
+import com.example.feature.search.R
 import com.example.feature.search.presentation.store.SearchNewsAction
 import com.example.feature.search.presentation.store.SearchNewsStore
 import com.example.feature.search.presentation.store.SearchScreenState
@@ -69,11 +71,12 @@ fun NewsSearchScreen(
                         contentAlignment = Alignment.Center
                     ) {
                         Text(
-                            text = "Введите текст для поиска информации",
+                            text = stringResource(id = R.string.app_search_empty_screen),
                             fontSize = 22.sp,
                             color = Color.Black,
                             fontWeight = FontWeight.Bold,
-                            textAlign = TextAlign.Center
+                            textAlign = TextAlign.Center,
+                            maxLines = 2
                         )
                     }
                 }

@@ -1,6 +1,5 @@
 package com.example.feature.news.presentation.ui
 
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -13,9 +12,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
@@ -25,6 +24,7 @@ import coil.compose.AsyncImage
 import coil.request.CachePolicy
 import coil.request.ImageRequest
 import coil.size.Size
+import com.example.feature.news.R
 import com.example.feature.news.domain.models.NewsItem
 
 @Composable
@@ -36,10 +36,7 @@ fun NewsElement(
         modifier = modifier
             .fillMaxWidth()
             .wrapContentHeight()
-            .background(
-                color = Color.LightGray,
-                shape = RoundedCornerShape(12.dp)
-            )
+            .clip(RoundedCornerShape(12.dp))
             .padding(8.dp),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
@@ -58,7 +55,7 @@ fun NewsElement(
                 contentDescription = null,
                 contentScale = ContentScale.Crop,
             )
-            Spacer(modifier = Modifier.height(8.dp))
+            Spacer(modifier = Modifier.height(4.dp))
         }
         if (newsItem.author != null) {
             Text(
@@ -66,11 +63,11 @@ fun NewsElement(
                     .fillMaxWidth(),
                 text = newsItem.author,
                 fontSize = 16.sp,
-                color = Color.Black,
+                color = colorResource(id = R.color.colorContentSecondary),
                 fontWeight = FontWeight.ExtraBold,
                 maxLines = 1,
             )
-            Spacer(modifier = Modifier.height(8.dp))
+            Spacer(modifier = Modifier.height(4.dp))
         }
 
         if (newsItem.title != null) {
@@ -80,11 +77,11 @@ fun NewsElement(
                 text = newsItem.title,
                 fontSize = 12.sp,
                 fontWeight = FontWeight.Bold,
-                color = Color.Black,
+                color = colorResource(id = R.color.colorContentPrimary),
                 maxLines = 2,
                 overflow = TextOverflow.Ellipsis
             )
-            Spacer(modifier = Modifier.height(8.dp))
+            Spacer(modifier = Modifier.height(4.dp))
         }
 
         if (newsItem.content != null) {
@@ -93,7 +90,7 @@ fun NewsElement(
                     .fillMaxWidth(),
                 text = newsItem.content,
                 fontSize = 10.sp,
-                color = Color.Black,
+                color = colorResource(id = R.color.colorContentSecondary),
                 maxLines = 3,
                 overflow = TextOverflow.Ellipsis
             )

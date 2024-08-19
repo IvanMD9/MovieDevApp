@@ -19,8 +19,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.SolidColor
+import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -40,7 +42,9 @@ fun SearchTextField(
         modifier = modifier
             .height(40.dp)
             .clip(RoundedCornerShape(12.dp))
-            .background(Color.LightGray),
+            .background(
+                color = colorResource(id = R.color.colorBgSecondary)
+            ),
         value = value,
         enabled = true,
         onValueChange = onValueChange,
@@ -57,7 +61,7 @@ fun SearchTextField(
                         modifier = Modifier.padding(start = 8.dp),
                         text = stringResource(id = R.string.app_search_text_field_placeholder),
                         fontSize = 10.sp,
-                        color = Color.Gray
+                        color = colorResource(id = R.color.colorContentPrimary)
                     )
                 },
                 trailingIcon = {
@@ -68,14 +72,20 @@ fun SearchTextField(
                             modifier = Modifier
                                 .size(24.dp)
                                 .clickable(onClick = onClearText),
-                            tint = Color.Black
+                            tint = colorResource(id = R.color.colorContentPrimary)
                         )
                     }
                 },
                 container = {},
-                contentPadding = PaddingValues(horizontal = 16.dp)
+                contentPadding = PaddingValues(horizontal = 16.dp),
             )
         },
+        cursorBrush = SolidColor(
+            value = colorResource(id = R.color.colorContentPrimary)
+        ),
+        textStyle = TextStyle
+            .Default
+            .copy(color = colorResource(id = R.color.colorContentPrimary)),
         singleLine = true
     )
 }

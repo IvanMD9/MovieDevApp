@@ -1,5 +1,6 @@
 package com.example.feature.news.presentation.ui
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
@@ -19,7 +20,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
@@ -46,11 +47,15 @@ fun NewsScreen(
     }.collectAsLazyPagingItems()
 
     Scaffold(
-        modifier = Modifier.fillMaxSize(),
+        modifier = Modifier
+            .fillMaxSize(),
         topBar = {
             Box(
                 modifier = Modifier
                     .fillMaxWidth()
+                    .background(
+                        color = colorResource(id = R.color.colorBgpPrimary)
+                    )
                     .height(44.dp)
                     .padding(horizontal = 8.dp)
             ) {
@@ -66,7 +71,7 @@ fun NewsScreen(
                                 store.consume(NewsAction.OnClickMenu(showMenu = true))
                             }
                         ),
-                    tint = Color.Black
+                    tint = colorResource(id = R.color.colorContentPrimary)
                 )
 
                 Text(
@@ -74,7 +79,7 @@ fun NewsScreen(
                     text = stringResource(id = R.string.app_news_title),
                     fontSize = 18.sp,
                     fontWeight = FontWeight.Bold,
-                    color = Color.Black,
+                    color = colorResource(id = R.color.colorContentPrimary),
                 )
                 Icon(
                     imageVector = Icons.Default.Search,
@@ -89,7 +94,7 @@ fun NewsScreen(
                                 store.consume(NewsAction.OnClickSearch)
                             }
                         ),
-                    tint = Color.Black
+                    tint = colorResource(id = R.color.colorContentPrimary)
                 )
             }
         },

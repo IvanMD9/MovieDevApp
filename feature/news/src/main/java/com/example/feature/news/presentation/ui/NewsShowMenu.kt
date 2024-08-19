@@ -1,5 +1,6 @@
 package com.example.feature.news.presentation.ui
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.DropdownMenu
@@ -8,10 +9,11 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.example.feature.news.R
 import com.example.feature.news.domain.models.CountryNews
 
 @Composable
@@ -22,13 +24,18 @@ fun NewsShowMenu(
     modifier: Modifier = Modifier,
 ) {
     Box(
-        modifier = modifier.padding(
-            start = 40.dp,
-            top = 40.dp
-        ),
+        modifier = modifier
+            .padding(
+                start = 40.dp,
+                top = 40.dp
+            ),
         contentAlignment = Alignment.TopStart
     ) {
         DropdownMenu(
+            modifier = Modifier
+                .background(
+                    color = colorResource(id = R.color.colorBgSecondary)
+                ),
             expanded = expanded,
             onDismissRequest = {
                 onCloseMenu()
@@ -39,7 +46,7 @@ fun NewsShowMenu(
                     text = {
                         Text(
                             text = stringResource(id = country.country),
-                            color = Color.Black
+                            color = colorResource(id = R.color.colorContentPrimary)
                         )
                     },
                     onClick = {

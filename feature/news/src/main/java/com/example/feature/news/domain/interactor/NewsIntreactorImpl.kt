@@ -1,7 +1,7 @@
 package com.example.feature.news.domain.interactor
 
 import com.example.feature.news.data.repository.NewsRepository
-import com.example.feature.news.domain.models.NewsItem
+import com.example.core.news.model.NewsItem
 import javax.inject.Inject
 
 class NewsIntreactorImpl @Inject constructor(

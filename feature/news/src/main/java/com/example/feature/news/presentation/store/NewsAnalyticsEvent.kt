@@ -2,7 +2,7 @@ package com.example.feature.news.presentation.store
 
 import android.os.Bundle
 import androidx.core.os.bundleOf
-import com.example.analytics.event.AnalyticsEvent
+import com.example.core.analytics.event.AnalyticsEvent
 
 sealed class NewsAnalyticsEvent(
     override val name: String = "",

@@ -23,6 +23,8 @@ rootProject.name = "NewsDevApp"
 include(":app")
 include(":core")
 include(":core:analytics")
+include(":core:ui")
+include(":core:news")
 include(":core:network")
 include(":feature:news")
 include(":feature:search")

@@ -1,9 +1,9 @@
 package com.example.feature.search.data.mapper
 
-import com.example.feature.search.domain.models.NewsSearchItem
-import com.example.network.client.searchnews.models.NewsSearchResponse
+import com.example.core.network.client.searchnews.models.NewsSearchResponse
+import com.example.core.news.model.NewsItem
 
-fun NewsSearchResponse.toDomain(): NewsSearchItem = NewsSearchItem(
+fun NewsSearchResponse.toDomain(): NewsItem = NewsItem(
     author = author,
     title = title,
     image = image,

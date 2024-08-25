@@ -67,6 +67,8 @@ dependencies {
     implementation(project(":core"))
     implementation(project(":core:network"))
     implementation(project(":core:analytics"))
+    implementation(project(":core:ui"))
+    implementation(project(":core:news"))
     implementation(project(":feature:news"))
     implementation(project(":feature:search"))
 }

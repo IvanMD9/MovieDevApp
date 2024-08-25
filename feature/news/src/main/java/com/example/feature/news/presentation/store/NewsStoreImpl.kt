@@ -1,13 +1,13 @@
 package com.example.feature.news.presentation.store
 
 import androidx.paging.PagingData
-import com.example.analytics.analyticsmanager.AnalyticsManager
+import com.example.core.analytics.analyticsmanager.AnalyticsManager
 import com.example.core.mvi.DisposableStoreImpl
 import com.example.core.paging.PagingSourceBuilder
 import com.example.feature.news.domain.interactor.NewsIntreactor
 import com.example.feature.news.domain.models.CountryNews
-import com.example.feature.news.domain.models.NewsItem
-import com.example.feature.news.presentation.pager.NewsDiffUtil
+import com.example.core.news.model.NewsItem
+import com.example.core.news.paging.NewsDiffUtil
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.update
 import javax.inject.Inject
@@ -20,9 +20,8 @@ class NewsStoreImpl @Inject constructor(
     override val initialState: NewsState
         get() = NewsState(
             news = ::newsPagingFlow,
-            isShowMenu = false,
             selectCountry = CountryNews.RUSSIAN.value,
-            isLoading = true,
+            isShowMenu = false,
         )
 
     private val newsPagingFlow: Flow<PagingData<NewsItem>>

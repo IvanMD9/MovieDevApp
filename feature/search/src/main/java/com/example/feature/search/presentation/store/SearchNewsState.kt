@@ -1,11 +1,11 @@
 package com.example.feature.search.presentation.store
 
 import androidx.paging.PagingData
-import com.example.feature.search.domain.models.NewsSearchItem
+import com.example.core.news.model.NewsItem
 import kotlinx.coroutines.flow.Flow
 
 data class SearchNewsState(
-    val searchNews: () -> Flow<PagingData<NewsSearchItem>>,
+    val searchNews: () -> Flow<PagingData<NewsItem>>,
     val searchQuery: String,
     val searchScreenState: SearchScreenState,
 )

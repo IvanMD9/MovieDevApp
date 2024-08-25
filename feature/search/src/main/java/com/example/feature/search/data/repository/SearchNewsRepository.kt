@@ -1,11 +1,11 @@
 package com.example.feature.search.data.repository
 
-import com.example.feature.search.domain.models.NewsSearchItem
+import com.example.core.news.model.NewsItem
 
 interface SearchNewsRepository {
 
     suspend fun getSearchNews(
         query: String,
         page: Int
-    ): List<NewsSearchItem>
+    ): List<NewsItem>
 }

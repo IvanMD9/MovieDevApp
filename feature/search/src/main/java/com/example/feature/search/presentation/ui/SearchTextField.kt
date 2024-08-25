@@ -26,7 +26,9 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.core.ui.NewsDimensions
 import com.example.feature.search.R
+import com.example.core.ui.R as coreUiR
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -41,9 +43,9 @@ fun SearchTextField(
     BasicTextField(
         modifier = modifier
             .height(40.dp)
-            .clip(RoundedCornerShape(12.dp))
+            .clip(RoundedCornerShape(NewsDimensions.Spacing.space_12))
             .background(
-                color = colorResource(id = R.color.colorBgSecondary)
+                color = colorResource(id = coreUiR.color.colorBgSecondary)
             ),
         value = value,
         enabled = true,
@@ -58,10 +60,10 @@ fun SearchTextField(
                 interactionSource = interactionSource,
                 placeholder = {
                     Text(
-                        modifier = Modifier.padding(start = 8.dp),
+                        modifier = Modifier.padding(start = NewsDimensions.Spacing.space_8),
                         text = stringResource(id = R.string.app_search_text_field_placeholder),
                         fontSize = 10.sp,
-                        color = colorResource(id = R.color.colorContentPrimary)
+                        color = colorResource(id = coreUiR.color.colorContentPrimary)
                     )
                 },
                 trailingIcon = {
@@ -72,20 +74,20 @@ fun SearchTextField(
                             modifier = Modifier
                                 .size(24.dp)
                                 .clickable(onClick = onClearText),
-                            tint = colorResource(id = R.color.colorContentPrimary)
+                            tint = colorResource(id = coreUiR.color.colorContentPrimary)
                         )
                     }
                 },
                 container = {},
-                contentPadding = PaddingValues(horizontal = 16.dp),
+                contentPadding = PaddingValues(horizontal = NewsDimensions.Spacing.space_16),
             )
         },
         cursorBrush = SolidColor(
-            value = colorResource(id = R.color.colorContentPrimary)
+            value = colorResource(id = coreUiR.color.colorContentPrimary)
         ),
         textStyle = TextStyle
             .Default
-            .copy(color = colorResource(id = R.color.colorContentPrimary)),
+            .copy(color = colorResource(id = coreUiR.color.colorContentPrimary)),
         singleLine = true
     )
 }

@@ -13,7 +13,7 @@ import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.example.feature.news.R
+import com.example.core.ui.R as coreUiR
 import com.example.feature.news.domain.models.CountryNews
 
 @Composable
@@ -34,7 +34,7 @@ fun NewsShowMenu(
         DropdownMenu(
             modifier = Modifier
                 .background(
-                    color = colorResource(id = R.color.colorBgSecondary)
+                    color = colorResource(id = coreUiR.color.colorBgSecondary)
                 ),
             expanded = expanded,
             onDismissRequest = {
@@ -46,7 +46,7 @@ fun NewsShowMenu(
                     text = {
                         Text(
                             text = stringResource(id = country.country),
-                            color = colorResource(id = R.color.colorContentPrimary)
+                            color = colorResource(id = coreUiR.color.colorContentPrimary)
                         )
                     },
                     onClick = {

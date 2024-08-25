@@ -1,8 +1,8 @@
 package com.example.feature.news.data.repository
 
 import com.example.feature.news.data.mapper.toDomain
-import com.example.feature.news.domain.models.NewsItem
-import com.example.network.client.news.NewsClient
+import com.example.core.network.client.news.NewsClient
+import com.example.core.news.model.NewsItem
 import javax.inject.Inject
 
 class NewsRepositoryImpl @Inject constructor(

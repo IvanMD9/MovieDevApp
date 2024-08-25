@@ -1,12 +1,12 @@
 package com.example.feature.search.presentation.store
 
 import androidx.paging.PagingData
-import com.example.analytics.analyticsmanager.AnalyticsManager
+import com.example.core.analytics.analyticsmanager.AnalyticsManager
 import com.example.core.mvi.DisposableStoreImpl
 import com.example.core.paging.PagingSourceBuilder
 import com.example.feature.search.domain.interactor.SearchNewsIntreactor
-import com.example.feature.search.domain.models.NewsSearchItem
-import com.example.feature.search.presentation.pager.SearchNewsDiffUtil
+import com.example.core.news.model.NewsItem
+import com.example.core.news.paging.NewsDiffUtil
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
@@ -34,7 +34,7 @@ class SearchNewsStoreImpl @Inject constructor(
 
     private var searchJob: Job? = null
 
-    private val searchNewsPagingFlow: Flow<PagingData<NewsSearchItem>>
+    private val searchNewsPagingFlow: Flow<PagingData<NewsItem>>
         get() = PagingSourceBuilder(
             requestPage = { page, _ ->
                 searchNewsIntreactor.getSearchNews(
@@ -42,7 +42,7 @@ class SearchNewsStoreImpl @Inject constructor(
                     page = page
                 )
             },
-            pagingDiffUtil = SearchNewsDiffUtil
+            pagingDiffUtil = NewsDiffUtil
         ).flow
 
     override fun consume(action: SearchNewsAction) {

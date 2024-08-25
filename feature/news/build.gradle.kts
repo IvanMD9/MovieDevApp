@@ -47,4 +47,6 @@ dependencies {
     implementation(project(":core:network"))
     implementation(project(":core:analytics"))
     implementation(project(":core"))
+    implementation(project(":core:ui"))
+    implementation(project(":core:news"))
 }

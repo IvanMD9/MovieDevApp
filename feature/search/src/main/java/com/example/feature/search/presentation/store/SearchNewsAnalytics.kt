@@ -1,7 +1,7 @@
 package com.example.feature.search.presentation.store
 
 import android.os.Bundle
-import com.example.analytics.event.AnalyticsEvent
+import com.example.core.analytics.event.AnalyticsEvent
 
 sealed class SearchNewsAnalytics(
     override val name: String = "",

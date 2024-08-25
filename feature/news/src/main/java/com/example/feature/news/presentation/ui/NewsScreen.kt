@@ -29,8 +29,11 @@ import androidx.paging.compose.collectAsLazyPagingItems
 import com.example.core.extension.rememberLambda
 import com.example.core.extension.rememberLambda1
 import com.example.feature.news.R
+import com.example.core.ui.R as coreUiR
 import com.example.feature.news.presentation.store.NewsAction
 import com.example.feature.news.presentation.store.NewsStore
+import com.example.core.news.ui.NewsColumn
+import com.example.core.ui.NewsDimensions
 
 @Composable
 fun NewsScreen(
@@ -54,10 +57,10 @@ fun NewsScreen(
                 modifier = Modifier
                     .fillMaxWidth()
                     .background(
-                        color = colorResource(id = R.color.colorBgpPrimary)
+                        color = colorResource(id = coreUiR.color.colorBgpPrimary)
                     )
                     .height(44.dp)
-                    .padding(horizontal = 8.dp)
+                    .padding(horizontal = NewsDimensions.Spacing.space_8)
             ) {
                 Icon(
                     imageVector = Icons.Default.MoreVert,
@@ -65,13 +68,13 @@ fun NewsScreen(
                     modifier = Modifier
                         .align(Alignment.CenterStart)
                         .size(32.dp)
-                        .padding(end = 8.dp)
+                        .padding(end = NewsDimensions.Spacing.space_8)
                         .clickable(
                             onClick = rememberLambda {
                                 store.consume(NewsAction.OnClickMenu(showMenu = true))
                             }
                         ),
-                    tint = colorResource(id = R.color.colorContentPrimary)
+                    tint = colorResource(id = coreUiR.color.colorContentPrimary)
                 )
 
                 Text(
@@ -79,7 +82,7 @@ fun NewsScreen(
                     text = stringResource(id = R.string.app_news_title),
                     fontSize = 18.sp,
                     fontWeight = FontWeight.Bold,
-                    color = colorResource(id = R.color.colorContentPrimary),
+                    color = colorResource(id = coreUiR.color.colorContentPrimary),
                 )
                 Icon(
                     imageVector = Icons.Default.Search,
@@ -87,14 +90,14 @@ fun NewsScreen(
                     modifier = Modifier
                         .align(Alignment.CenterEnd)
                         .size(32.dp)
-                        .padding(end = 8.dp)
+                        .padding(end = NewsDimensions.Spacing.space_8)
                         .clickable(
                             onClick = {
                                 onSearchClick()
                                 store.consume(NewsAction.OnClickSearch)
                             }
                         ),
-                    tint = colorResource(id = R.color.colorContentPrimary)
+                    tint = colorResource(id = coreUiR.color.colorContentPrimary)
                 )
             }
         },

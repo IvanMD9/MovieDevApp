@@ -24,6 +24,8 @@ import com.example.feature.search.R
 import com.example.feature.search.presentation.store.SearchNewsAction
 import com.example.feature.search.presentation.store.SearchNewsStore
 import com.example.feature.search.presentation.store.SearchScreenState
+import com.example.core.news.ui.NewsColumn
+import com.example.core.ui.R as coreUiR
 
 @Composable
 fun NewsSearchScreen(
@@ -59,7 +61,7 @@ fun NewsSearchScreen(
         content = { paddingValues ->
             when (newsSearchStore.searchScreenState) {
                 is SearchScreenState.Content -> {
-                    NewsSearchColumn(
+                    NewsColumn(
                         lazyPagingItems = { lazyPagingItems },
                         modifier = Modifier.padding(paddingValues),
                         isLoadingVisible = (lazyPagingItems.itemCount > 0).not()
@@ -71,14 +73,14 @@ fun NewsSearchScreen(
                         modifier = Modifier
                             .fillMaxSize()
                             .background(
-                                color = colorResource(id = R.color.colorBgpPrimary)
+                                color = colorResource(id = coreUiR.color.colorBgpPrimary)
                             ),
                         contentAlignment = Alignment.Center
                     ) {
                         Text(
                             text = stringResource(id = R.string.app_search_empty_screen),
                             fontSize = 22.sp,
-                            color = colorResource(id = R.color.colorContentPrimary),
+                            color = colorResource(id = coreUiR.color.colorContentPrimary),
                             fontWeight = FontWeight.Bold,
                             textAlign = TextAlign.Center,
                             maxLines = 2

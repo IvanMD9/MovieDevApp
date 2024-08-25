@@ -16,7 +16,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.example.feature.search.R
+import com.example.core.ui.NewsDimensions
+import com.example.core.ui.R as coreUiR
 
 @Composable
 fun SearchToolbar(
@@ -30,10 +31,10 @@ fun SearchToolbar(
         modifier = modifier
             .fillMaxWidth()
             .background(
-                color = colorResource(id = R.color.colorBgpPrimary)
+                color = colorResource(id = coreUiR.color.colorBgpPrimary)
             )
             .height(56.dp)
-            .padding(horizontal = 12.dp),
+            .padding(horizontal = NewsDimensions.Spacing.space_12),
         verticalAlignment = Alignment.CenterVertically
     ) {
         Icon(
@@ -41,9 +42,9 @@ fun SearchToolbar(
             contentDescription = null,
             modifier = Modifier
                 .size(32.dp)
-                .padding(end = 8.dp)
+                .padding(end = NewsDimensions.Spacing.space_8)
                 .clickable(onClick = onBackClick),
-            tint = colorResource(id = R.color.colorContentPrimary)
+            tint = colorResource(id = coreUiR.color.colorContentPrimary)
         )
         SearchTextField(
             modifier = Modifier.weight(1f),

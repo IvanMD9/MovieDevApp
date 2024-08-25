@@ -1,6 +1,6 @@
 package com.example.feature.news.domain.interactor
 
-import com.example.feature.news.domain.models.NewsItem
+import com.example.core.news.model.NewsItem
 
 interface NewsIntreactor {
 
